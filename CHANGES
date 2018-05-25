@@ -1,0 +1,44 @@
+SUMMARY OF RELEASE CHANGES FOR OSPD-DEBSECAN
+============================================
+
+For detailed code changes, please visit
+ https://github.com/greenbone/ospd-debsecan/commits/master
+or get the entire source code repository and view log history:
+$ git clone https://github.com/greenbone/ospd-debsecan.git
+$ cd ospd-debsecan && git log
+
+
+ospd-debsecan 1.2b1 (2016-11-16)
+
+This is the first beta release of the 1.2 version of the OSP (OpenVAS Scanner
+Protocol) server for the debsecan tool to allow the retrieval of the debsecan
+scan results into the Open Vulnerability Assessment System (OpenVAS).
+
+Many thanks to everyone who has contributed to this release:
+Benoît Allard, Hani Benhabiles and Jan-Oliver Wagner.
+
+Main changes since 1.0.0:
+* All alarms now have an explicit QoD value of 97%.
+* Support for multi-host scanning has been added.
+* A test-suite has been added.
+* The documentation has been updated.
+
+
+osp-debsecan 1.0.0 (2015-06-01)
+
+This is the 1.0.0 release of the OSP (OpenVAS Scanner Protocol) server
+for the debsecan tool to allow the retrieval of the debsecan scan results
+into the Open Vulnerability Assessment System (OpenVAS).
+
+This release supports calling a local debsecan installation.
+About debsecan, see http://www.enyo.de/fw/software/debsecan/
+ 
+Central features of osp-debsecan are:
+
+* Call local debsecan tool and extract all CVE vulnerabilities.
+
+osp-debsecan is Free Software (Open Source), licensed under GNU General Public License
+Version 2 or any later version.  
+
+Many thanks to everyone who has contributed to this release:
+Jan-Oliver Wagner.
