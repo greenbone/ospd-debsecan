@@ -13,7 +13,7 @@ Then you can create scan tasks to use this scanner.
 OSPD-DEBSECAN is licensed under GNU General Public License Version 2 or
 any later version.  Please see file COPYING for details.
 
-All parts of OSP-DEBSECAN are Copyright (C) by Greenbone Networks GmbH
+All parts of OSPD-DEBSECAN are Copyright (C) by Greenbone Networks GmbH
 (see http://www.greenbone.net).
 
 
