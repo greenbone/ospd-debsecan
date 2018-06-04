@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/greenbone/ospd-debsecan.svg?style=svg)](https://circleci.com/gh/greenbone/ospd-debsecan)
+
 About OSPD-DEBSECAN
 -------------------
 
@@ -30,3 +32,4 @@ Please follow the general usage guide for ospd-based scanners:
 Noteworthy is that starting a scan requires a ssh credential parameter because
 ospd-debsecan needs to log into the target systems to run the locally installed
 debsecan tool.
+
