@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/greenbone/ospd-debsecan.svg?style=svg)](https://circleci.com/gh/greenbone/ospd-debsecan)
+[![Codecov](https://img.shields.io/codecov/c/github/greenbone/ospd-debsecan.svg)](https://codecov.io/gh/greenbone/ospd-debsecan)
 
 About OSPD-DEBSECAN
 -------------------
