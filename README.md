@@ -3,20 +3,21 @@
 About OSPD-DEBSECAN
 -------------------
 
-This is a OSP server implementation to allow GVM to remotely control
-a debsecan scanner, see http://www.enyo.de/fw/software/debsecan/
+This is an OSP server implementation to allow GVM to remotely control
+a debsecan scanner, see http://www.enyo.de/fw/software/debsecan/.
+
 OSPD-DEBSECAN identifies vulnerable packages on the Debian system it is
-executed on.
+executed against.
 
 Once running, you need to configure the Scanner for Greenbone Vulnerability
 Manager, for example via the web interface Greenbone Security Assistant.
 Then you can create scan tasks to use this scanner.
 
-OSPD-DEBSECAN is licensed under GNU General Public License Version 2 or
-any later version.  Please see file COPYING for details.
+OSPD-DEBSECAN is licensed under the GNU General Public License Version 2 or
+any later version.  Please see the file `COPYING` for details.
 
 All parts of OSPD-DEBSECAN are Copyright (C) by Greenbone Networks GmbH
-(see http://www.greenbone.net).
+(see https://www.greenbone.net).
 
 
 How to start OSPD-DEBSECAN
