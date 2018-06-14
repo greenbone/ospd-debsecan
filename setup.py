@@ -37,7 +37,7 @@ setup(
     author_email='info@greenbone.net',
 
     license='GPLV2+',
-    install_requires=['ospd>=1.2b2', 'ospd<=1.3.0', 'paramiko'],
+    install_requires=['ospd>=1.3.0', 'ospd<2.0', 'paramiko'],
 
     entry_points={
         'console_scripts': ['ospd-debsecan=ospd_debsecan.wrapper:main'],
