@@ -25,7 +25,7 @@ How to start OSPD-DEBSECAN
 --------------------------
 
 There are no special usage aspects for this module
-beyond the generic usage guide.
+beyond the general usage guide.
 
 Please follow the general usage guide for ospd-based scanners:
 
