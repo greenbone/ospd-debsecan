@@ -2,7 +2,8 @@
 
 # ospd-debsecan
 
-[![Codecov](https://codecov.io/gh/greenbone/ospd-debsecan/branch/master/graphs/badge.svg)](https://codecov.io/gh/greenbone/ospd-debsecan)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/greenbone/ospd-debsecan/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/greenbone/ospd-debsecan/?branch=master)
+[![code test coverage](https://codecov.io/gh/greenbone/ospd-debsecan/branch/master/graph/badge.svg)](https://codecov.io/gh/greenbone/ospd-debsecan)
 [![CircleCI](https://circleci.com/gh/greenbone/ospd-debsecan.svg?style=svg)](https://circleci.com/gh/greenbone/ospd-debsecan)
 
 This is an OSP server implementation to allow GVM to remotely control
