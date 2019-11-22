@@ -1,0 +1,15 @@
+[[source]]
+verify_ssl = true
+name = "pypi"
+url = "https://pypi.org/simple"
+
+[packages]
+paramiko = "*"
+ospd = {git = "https://github.com/greenbone/ospd.git",ref = "master",editable = true}
+
+[dev-packages]
+pylint = "*"
+black = "==19.10b0"
+autohooks-plugin-black = "*"
+autohooks = "*"
+autohooks-plugin-pylint = "*"
