@@ -22,8 +22,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
+from ospd.errors import OspdError
 from ospd.ospd_ssh import OSPDaemonSimpleSSH
-from ospd.misc import main as daemon_main
+from ospd.main import main as daemon_main
 from ospd_debsecan import __version__
 
 OSPD_DESC = """
@@ -55,10 +56,13 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
 
     """ Class for ospd-debsecan daemon. """
 
-    def __init__(self, certfile, keyfile, cafile):
+    def __init__(self, *, niceness=None, **kwargs):
         """ Initializes the ospd-debsecan daemon's internal data. """
-        super(OSPDdebsecan, self).__init__(certfile=certfile, keyfile=keyfile,
-                                            cafile=cafile)
+        super().__init__(
+            certfile=kwargs.get('cert_file'),
+            keyfile=kwargs.get('key_file'),
+            cafile=kwargs.get('ca_file'),
+        )
         self.server_version = __version__
         self.scanner_info['name'] = 'debsecan'
         self.scanner_info['version'] = 'depends on the local installation at the target host'
@@ -77,6 +81,8 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
     def exec_scan(self, scan_id, target):
         """ Starts the debsecan scanner for scan_id scan. """
 
+        credentials = self.get_scan_credentials(scan_id, target)
+        print (credentials)
         result = self.run_command(scan_id=scan_id, host=target, cmd="debsecan")
 
         if result is None:
@@ -86,8 +92,12 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
 
         for alarm in process_output(result):
             self.add_scan_alarm(scan_id, host=target, qod='97', **alarm)
+
         return 1
 
 def main():
     """ OSP debsecan main function. """
     daemon_main('OSPD - debsecan wrapper', OSPDdebsecan)
+
+if __name__ == '__main__':
+    main()
