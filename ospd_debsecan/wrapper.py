@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
-# Description:
-# Setup for the OSP debsecan Server
+# Copyright (C) 2019 Greenbone Networks GmbH
 #
-# Authors:
-# Jan-Oliver Wagner <Jan-Oliver.Wagner@greenbone.net>
-#
-# Copyright:
-# Copyright (C) 2015 Greenbone Networks GmbH
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,7 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from ospd.errors import OspdError
+""" Setup for the OSP Debsecan Server. """
+
 from ospd.ospd_ssh import OSPDaemonSimpleSSH
 from ospd.main import main as daemon_main
 from ospd_debsecan import __version__
@@ -44,6 +40,7 @@ For executing debsecan a low privileged user account is sufficient on the respec
 Also the tool 'debsecan' needs to be installed on the target systems.
 """
 
+
 def process_output(output):
     """ Generates values for the add_scan_alarm method """
     for line in output:
@@ -56,16 +53,15 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
 
     """ Class for ospd-debsecan daemon. """
 
-    def __init__(self, *, niceness=None, **kwargs):
+    def __init__(self, **kwargs):
         """ Initializes the ospd-debsecan daemon's internal data. """
-        super().__init__(
-            certfile=kwargs.get('cert_file'),
-            keyfile=kwargs.get('key_file'),
-            cafile=kwargs.get('ca_file'),
-        )
+        super().__init__(**kwargs)
+
         self.server_version = __version__
         self.scanner_info['name'] = 'debsecan'
-        self.scanner_info['version'] = 'depends on the local installation at the target host'
+        self.scanner_info[
+            'version'
+        ] = 'depends on the local installation at the target host'
         self.scanner_info['description'] = OSPD_DESC
 
     def check(self):
@@ -82,12 +78,15 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
         """ Starts the debsecan scanner for scan_id scan. """
 
         credentials = self.get_scan_credentials(scan_id, target)
-        print (credentials)
+        print(credentials)
         result = self.run_command(scan_id=scan_id, host=target, cmd="debsecan")
 
         if result is None:
-            self.add_scan_error(scan_id, host=target,
-              value="A problem occurred trying to execute 'debsecan'.")
+            self.add_scan_error(
+                scan_id,
+                host=target,
+                value="A problem occurred trying to execute 'debsecan'.",
+            )
             return 2
 
         for alarm in process_output(result):
@@ -95,9 +94,11 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
 
         return 1
 
+
 def main():
     """ OSP debsecan main function. """
     daemon_main('OSPD - debsecan wrapper', OSPDdebsecan)
+
 
 if __name__ == '__main__':
     main()
