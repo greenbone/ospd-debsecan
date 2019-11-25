@@ -74,23 +74,38 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
 
         return True
 
+    def finish_host(self, scan_id, target):
+        """ Set the host progress to 100 and the status to finished."""
+        self.set_scan_host_progress(scan_id, target, target, 100)
+        self.set_scan_host_finished(scan_id, target, target)
+
     def exec_scan(self, scan_id, target):
         """ Starts the debsecan scanner for scan_id scan. """
 
-        credentials = self.get_scan_credentials(scan_id, target)
         result = self.run_command(scan_id=scan_id, host=target, cmd="debsecan")
-
         if result is None:
             self.add_scan_error(
                 scan_id,
                 host=target,
                 value="A problem occurred trying to execute 'debsecan'.",
             )
+
+            self.finish_host(scan_id, target)
             return 2
 
         for alarm in process_output(result):
-            self.add_scan_alarm(scan_id, host=target, qod='97', **alarm)
+            self.add_scan_alarm(
+                scan_id,
+                host=target,
+                hostname='',
+                **alarm,
+                port='',
+                test_id='',
+                severity='',
+                qod='97',
+            )
 
+        self.finish_host(scan_id, target)
         return 1
 
 
