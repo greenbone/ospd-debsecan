@@ -78,7 +78,6 @@ class OSPDdebsecan(OSPDaemonSimpleSSH):
         """ Starts the debsecan scanner for scan_id scan. """
 
         credentials = self.get_scan_credentials(scan_id, target)
-        print(credentials)
         result = self.run_command(scan_id=scan_id, host=target, cmd="debsecan")
 
         if result is None:
